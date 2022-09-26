@@ -12,12 +12,24 @@ const PageRegister: React.FC = () => {
             </View>
 
             <View style={styles.ContainerUserRegister}>
+                
                 <View style={styles.ContainerTexts}>
                     <Text style={styles.TextRegister}>Inscrever-se</Text>
                     <Text style={styles.TextPersonalData}>Dados pessoais</Text>
-
-                    <Input placeholder="email" />
                 </View>
+
+                <View style={styles.ContainerInputs}>
+
+                    <Text style={styles.TextTitleInput}>Nome</Text>
+                    <Input placeholder="Nome" />
+                    <Text style={styles.TextTitleInput}>Telefone</Text>
+                    <Input placeholder="Telefone" />
+                    <Text style={styles.TextTitleInput}>Celular</Text>
+                    <Input placeholder="Celular" />
+                    <Text style={styles.TextTitleInput}>Email</Text>
+                    <Input placeholder="Email" />
+                </View>
+
 
 
             </View>

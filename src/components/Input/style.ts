@@ -12,6 +12,5 @@ export default StyleSheet.create({
         fontFamily: fonts.ROBOTO_MEDIUM,
         fontSize: 16,
         textDecorationLine: "none",
-       
      }
 })

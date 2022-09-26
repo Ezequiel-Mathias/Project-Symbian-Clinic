@@ -37,7 +37,9 @@ export default StyleSheet.create({
         display:'flex',
         alignItems:'flex-start',
         marginLeft:20,
-        marginTop: 37 
+        marginTop: 37,
+        marginBottom:22
+         
     },
 
     TextRegister:{
@@ -53,11 +55,15 @@ export default StyleSheet.create({
         marginLeft: 2
     },
 
-    testando:{
-        width:100,
-        height: 10,
-        backgroundColor:colors.GREY
+    ContainerInputs:{
+        marginLeft: 20
+    },
+
+    TextTitleInput:{
+        marginBottom:8,
+        marginTop:8
     }
+
 
 
 })
