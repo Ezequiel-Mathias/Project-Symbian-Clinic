@@ -1,6 +1,5 @@
-<img src="assets/icon.png" alt="drawing" width="100" />
 
-Aplicativo de tarefas desenvolvido com o framework React Native.
+Aplicativo Clinica Medica desenvolvido com o framework React Native.
 
 ### Pre-requisitos
 
@@ -12,11 +11,7 @@ Aplicativo de tarefas desenvolvido com o framework React Native.
 
 ### Instalação
 
-Caso obtenha chocolatey, segue a instalação do NodeJs:
-```
-choco install nodejs
-```
-Do contrário, acesse https://nodejs.org/en/ para installar o Node JS versão LTS
+Acesse https://nodejs.org/en/ para installar o Node JS versão LTS
 
 Depois de installar o Node JS instale o Expo-cli, para isso abra o seu terminal e digite:
 ```
@@ -29,11 +24,11 @@ Escolha uma pasta para armazenar o projeto e em seguida digite no terminal:
 
 Primeiro faça um clone do repositório na pasta desejada do seu computador
 ```
-git clone https://github.com/Rafarache/ReactNativeApp.git
+git clone arrumar
 ```
 Em seguida entre na pasta do repositório no seu computador e execute o comando abaixo
 ```
-npm install
+npm i
 ```
 ### Executar o projeto
 
