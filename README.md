@@ -1,7 +1,6 @@
 # Symbian Clinic
 
-Aplicativo Symbian Clinic desenvolvido com o framework React Native como exercício desenvolvido pela instituição de ensino<br/>
-SENAI-JANDIRA cujo o objetivo é uma  aplicação   para   o agendamento  de  cirurgias  em  uma  clínica.  Essa  aplicação  será  usada  por  pacientes, enfermeiras(os)  e  médicas(os)  onde  esses  diferentes  usuários  realizarão  diferentes tarefas.
+Aplicativo Symbian Clinic desenvolvido com o framework React Native como exercício desenvolvido pela instituição de ensino SENAI-JANDIRA cujo o objetivo é uma  aplicação   para   o agendamento  de  cirurgias  em  uma  clínica.  Essa  aplicação  será  usada  por  pacientes, enfermeiras(os)  e  médicas(os)  onde  esses  diferentes  usuários  realizarão  diferentes tarefas.
 
 ### Pre-requisitos
 
