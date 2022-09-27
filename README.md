@@ -1,5 +1,7 @@
+# Symbian Clinic
 
-Aplicativo Clinica Medica desenvolvido com o framework React Native.
+Aplicativo Symbian Clinic desenvolvido com o framework React Native como exercício desenvolvido pela instituição de ensino<br/>
+SENAI-JANDIRA cujo o objetivo é uma  aplicação   para   o agendamento  de  cirurgias  em  uma  clínica.  Essa  aplicação  será  usada  por  pacientes, enfermeiras(os)  e  médicas(os)  onde  esses  diferentes  usuários  realizarão  diferentes tarefas.
 
 ### Pre-requisitos
 
@@ -40,8 +42,3 @@ Em seguida, será aberto no seu navegador padrão uma aba na porta http://localh
 O app pode rodar no seu próprio celular ou em um emulador no computador.<br/>
 No celular basta baixar o aplicativo Expo na Play Store e pegar o QRCODE da aba aberta no navegador. O dowload do App será em seguida feito.<br/>
 
-### Download APK
-
-Link: https://drive.google.com/open?id=1mZMBqvD_sCeneHAYlSjiy44Hi0aRgMg0
-
-<img src="assets/splash.png" alt="drawing" width="200"/>
