@@ -25,7 +25,7 @@ Escolha uma pasta para armazenar o projeto e em seguida digite no terminal:
 
 Primeiro faça um clone do repositório na pasta desejada do seu computador
 ```
-git clone arrumar
+git clone https://github.com/Ezequiel-Mathias/Project-Symbian-Clinic
 ```
 Em seguida entre na pasta do repositório no seu computador e execute o comando abaixo
 ```
