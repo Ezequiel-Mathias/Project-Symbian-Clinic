@@ -1,7 +1,7 @@
 import React  from 'react'
 import { View, Text, Image } from 'react-native'
 import styles from './style'
-import Button from '../../components/Button'
+import Button from '../../components/shared/Button'
 import colors from '../../styles/colors'
 
 const PageHome: React.FC = ({navigation}) => {

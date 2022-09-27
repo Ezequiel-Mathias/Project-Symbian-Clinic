@@ -1,25 +1,30 @@
 import { StyleSheet } from "react-native";
-import colors from "../../styles/colors";
+import colors from "../../../styles/colors";
+import fonts from "../../../styles/fonts";
 
 const base = {
     width : 300,
-    height : 48,
+    height : 38,
     margin : 16,
+    
     borderRadius: 12,
     backgroundColor : colors.PRIMARY,
 }
 
 const buttonStyles = StyleSheet.create({
+    ContainerButton:{
+        display:"flex",
+        alignItems:'center',
+    },
     base : {
         ...base,
-        justifyContent: 'center',
-        alignItems : 'center',
-        flexDirection : 'row',
         backgroundColor: colors.PRIMARY
     },
     text : {
+        height:30,
         color : colors.WHITE,
-        fontSize: 20
+        fontSize: 24,
+        fontFamily: fonts.ROBOTO_BLACK, 
     },
 })
 

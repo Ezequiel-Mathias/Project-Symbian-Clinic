@@ -9,7 +9,7 @@ interface IButtonProps {
     textStyle? : object | object[]
     iconSize? : number,
     iconColor? : string
-    nameIcon? : string | ''
+    nameIcon? : keyof typeof AntDesign.glyphMap
     text?: string
 }
 
@@ -20,8 +20,8 @@ const ButtonComponent : React.FC<IButtonProps> = ({onPress, style, nameIcon, ico
             activeOpacity={.75}
             onPress={onPress}
             style={style || buttonStyles.base}>
-            <View >
-                <AntDesign name={nameIcon} size={iconSize} color={iconColor}/>
+            <View style={buttonStyles.ContainerButton}>
+                {nameIcon && <AntDesign name={nameIcon} size={iconSize} color={iconColor}/>}
                 <Text style={[buttonStyles.text,textStyle]}>{text}</Text>
             </View>
         </TouchableOpacity>

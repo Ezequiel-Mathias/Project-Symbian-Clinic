@@ -1,36 +1,35 @@
 import { StyleSheet } from "react-native";
 import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
+import globalStyles from "../../styles/globalStyles";
+import buttonStyles from "../../components/shared/Button/style";
 
 export default StyleSheet.create({
     ContainerRegister: {
-        width: '100%',
-        height: '100%',
-        backgroundColor: colors.PRIMARY,
-        display: 'flex',
-        alignItems: 'center',
-        flexDirection: 'column'
+        ...globalStyles.Containers
     },
 
     ContainerImage:{
         marginTop: 50,
-        marginBottom: 10
+        marginBottom: 10,
+        display: 'flex',
+        flexDirection: 'row',
     },
 
     Image:{
         width: 255,
         height:207
+    },
 
+    IconArrowLeft:{
+        height: 40,
+        marginLeft: -40,
+        marginRight: 20
+        
     },
 
     ContainerUserRegister:{
-        width: '100%',
-        backgroundColor: colors.WHITE,
-        height: '100%',
-        borderRadius: 40,
-        display: 'flex',
-        flexDirection: 'column'
-        
+        ...globalStyles.ContainerInteractionUser
     },
 
     ContainerTexts:{
@@ -51,18 +50,37 @@ export default StyleSheet.create({
     TextPersonalData:{
         fontSize: 16,
         fontFamily:fonts.ROBOTO_MEDIUM,
-        color: colors.GREY,
+        color: colors.BLACK,
         marginLeft: 2
     },
 
     ContainerInputs:{
-        marginLeft: 20
+        marginLeft: 30,
+        flexBasis:'40%'
     },
 
     TextTitleInput:{
         marginBottom:8,
-        marginTop:8
-    }
+        marginTop:8,
+        fontFamily: fonts.ROBOTO_MEDIUM,
+        fontSize: 16
+    },
+
+    ButtonIcon:{
+        ...globalStyles.ButtonIconComeBack
+
+    },
+
+    ContainerButtonIconComeBack:{
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        marginTop:20,
+        
+    },
+
+   
+   
 
 
 

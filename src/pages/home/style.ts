@@ -1,16 +1,12 @@
 import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
 import { StyleSheet } from "react-native";
+import globalStyles from "../../styles/globalStyles";
 
 
 export default StyleSheet.create({
     ContainerRegister: {
-        width: '100%',
-        height: '100%',
-        backgroundColor: colors.PRIMARY,
-        display: 'flex',
-        alignItems: 'center',
-        flexDirection: 'column'
+        ...globalStyles.Containers
     },
     Logo:{
         color: colors.WHITE,
@@ -25,14 +21,8 @@ export default StyleSheet.create({
     },
 
     ContainerNextStep:{
-        width: '100%',
-        backgroundColor: colors.WHITE,
-        height: '100%',
-        borderRadius: 40,
-        display: 'flex',
-        alignItems: 'center',
-        flexDirection: 'column'
-        
+        ...globalStyles.ContainerInteractionUser,
+        alignItems: 'center'
     },
     RegisterText:{
         fontSize: 32,
