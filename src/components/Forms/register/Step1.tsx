@@ -3,7 +3,7 @@ import { View, Text, Alert } from 'react-native'
 import Input from '../../shared/Input'
 import Button from "../../shared/Button";
 import colors from "../../../styles/colors";
-import { applyCellMask , applyTelephoneMask } from "../../../utils/masks";
+import {applyTelephoneMask } from "../../../utils/masks";
 
 
 export interface IRegisterProps {
@@ -15,17 +15,18 @@ export interface IRegisterProps {
 
 const RegisterStep1: React.FC<IRegisterProps> = ({ onPress , styles, onChange , formData}) => {
     
-    
-
-    
-
-   
     return (
         <View>
             <View style={styles.ContainerInputs}>
 
                 <Text style={styles.TextTitleInput}>Nome</Text>
-                <Input icon="person" placeholder="Nome" />
+                <Input 
+                icon="person" 
+                placeholder="Nome" 
+                value={formData.name}
+                keyboardType={'default'}
+                onChangeText={(text : string) => onChange((text) , 'name')}
+                />
 
                 <Text style={styles.TextTitleInput}>Telefone</Text>
                 <Input 
@@ -36,28 +37,6 @@ const RegisterStep1: React.FC<IRegisterProps> = ({ onPress , styles, onChange , 
                 onChangeText={(text: string) => onChange(applyTelephoneMask(text) , 'telephone')}
                 />
 
-
-                <Text style={styles.TextTitleInput}>Celular</Text>
-
-
-                <Input 
-                icon="settings-cell"                         
-                placeholder="(xx) xxxxx-xxxx"
-                value={formData.cell}
-                onChangeText={(text : string) => onChange(applyCellMask(text), 'cell')}
-                keyboardType={'numeric'}
-                />
-
-                <Text style={styles.TextTitleInput}>Email</Text>
-
-                <Input 
-                
-                icon="email" 
-                placeholder="Email"
-                value={formData.email}
-                onChangeText={(text: string) => onChange(text, "email")}
-                keyboardType='email-address'
-                 />
             </View>
 
             <View style={styles.ContainerButtonIconComeBack}>

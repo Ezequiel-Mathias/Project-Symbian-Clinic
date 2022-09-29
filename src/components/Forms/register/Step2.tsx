@@ -1,32 +1,71 @@
 import React from "react";
-import { View, Text } from 'react-native';
-import Input from '../../shared/Input';
-import Button from '../../shared/Button'
+import { View, Text } from "react-native";
+import Input from "../../shared/Input";
+import ButtonComponent from "../../shared/Button";
+import { applyCellMask } from "../../../utils/masks";
+import { isEmail } from '../../../utils/validation';
+import colors from "../../../styles/colors";
 
-
-interface IRegisterStep2Props {
-    onPress?: any,
+export interface IRegisterPropsStep2Props {
+    NextStep: any
     styles: any
+    onChange: (value: string, key: any) => void
+    formData: any
 }
-const RegisterStep2: React.FC<IRegisterStep2Props> = ({ styles }) => {
-    return (
-        <View >
-            <View style={styles.ContainerInputs}>
-                <Text style={styles.TextTitleInput}>Nome</Text>
-                <Input icon="person" placeholder="Nome" />
-                <Text style={styles.TextTitleInput}>Telefone</Text>
-                <Input icon="settings-cell" placeholder="Telefone" />
-            </View>
 
-            <View style={styles.ContainerButtonIconComeBack}>
-                <Button
-                    text="Criar conta"
-                    onPress={() => { }}
-                    
+
+const RegisterStep2: React.FC<IRegisterPropsStep2Props> = ({ styles, onChange, formData, NextStep }) => {
+
+    const onSubmit = async () => {
+        if (formData.cell.length <= 14) {
+            return alert('Verifique o campo de Celular algo está errado!')
+        }
+
+        else if (!isEmail(formData.email)) {
+            return alert('Verifique o campo de E-mail algo está errado!')
+
+        } else {
+            NextStep()
+        }
+
+    }
+
+    return (
+        <View>
+            <View style={styles.ContainerInputs}>
+
+                <Text style={styles.TextTitleInput}>Celular</Text>
+                <Input
+                    icon="settings-cell"
+                    placeholder="(xx) xxxxx-xxxx"
+                    value={formData.cell}
+                    onChangeText={(text: string) => onChange(applyCellMask(text), 'cell')}
+                    keyboardType={'numeric'}
+                />
+
+                <Text style={styles.TextTitleInput}>Email</Text>
+                <Input
+
+                    icon="email"
+                    placeholder="Email"
+                    value={formData.email}
+                    onChangeText={(text: string) => onChange(text, "email")}
+                    keyboardType='email-address'
                 />
             </View>
 
+
+            <View style={styles.ContainerButtonIconComeBack}>
+                <ButtonComponent
+                    style={styles.ButtonIcon}
+                    nameIcon="arrowright"
+                    onPress={onSubmit}
+                    iconColor={colors.WHITE}
+                    iconSize={32}
+                />
+            </View>
         </View>
+
     )
 }
 

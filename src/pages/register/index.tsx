@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import { View, Text, Image } from "react-native";
 import styles from "./style";
-import Step1 from '../../components/Forms/register/Step1'
-import Step2 from "../../components/Forms/register/Step2";
+import RegisterStep1 from '../../components/Forms/register/Step1'
+import RegisterStep3 from "../../components/Forms/register/Step3";
 import Button from '../../components/shared/Button'
-import { isEmail } from '../../utils/validation';
 import colors from "../../styles/colors";
+import RegisterStep2 from "../../components/Forms/register/Step2";
+
+export interface IPropsSteps{
+    NextStep?: any
+    styles: any
+    onChange : (value : string, key : any) => void
+    formData: any
+}
+
 
 const PageRegister: React.FC = ({navigation}) => {
 
@@ -13,6 +21,7 @@ const PageRegister: React.FC = ({navigation}) => {
         email : "",
         cell : "",
         telephone : "",
+        name : "",
         
     })
 
@@ -26,21 +35,18 @@ const PageRegister: React.FC = ({navigation}) => {
     }
 
     const NextStep = () => {
-        if(CurrentStep < 1){
+        if(CurrentStep < 2){
             setCureentStep(CurrentStep + 1)
         }
     }
 
     const onSubmit = async () => {
-        if(formValues.cell.length <= 14){
-            return alert ('Verifique o campo de Celular algo está errado!')
-        }
-        else if(formValues.telephone.length <= 13){
+        if(formValues.name.length < 4){
+            return alert ('Verifique o campo Nome algo está errado, seu nome deve conter mais de 4 letras !')
+        }else if(formValues.telephone.length <= 13){
             return alert ('Verifique o campo de Telefone algo está errado!')
-        }else if(!isEmail(formValues.email)){
-            return alert ('Verifique o campo de E-mail algo está errado!')
-
-        }else{
+        }
+        else{
            NextStep()
         }
         
@@ -48,12 +54,16 @@ const PageRegister: React.FC = ({navigation}) => {
 
     const Steps = [
         {
-            desc: 'Dados pessoais',
-            component: <Step1 formData={formValues} onChange={handleInputChange} styles={styles} onPress={onSubmit}/> 
+            desc: 'Dados Pessoais',
+            component: <RegisterStep1 formData={formValues} onChange={handleInputChange} styles={styles} onPress={onSubmit}/> 
+        },
+        {
+            desc: 'Dados Pessoais',
+            component: <RegisterStep2 formData={formValues} onChange={handleInputChange} styles={styles} NextStep={NextStep} />,
         },
         {
             desc: 'Dados do responsável',
-            component: <Step2 styles={styles} />,
+            component: <RegisterStep3 styles={styles} />,
         },
 
     ]
