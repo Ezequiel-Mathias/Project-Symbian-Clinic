@@ -2,7 +2,6 @@ import { StyleSheet } from "react-native";
 import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
 import globalStyles from "../../styles/globalStyles";
-import buttonStyles from "../../components/shared/Button/style";
 
 export default StyleSheet.create({
     ContainerRegister: {
@@ -56,7 +55,7 @@ export default StyleSheet.create({
 
     ContainerInputs:{
         marginLeft: 30,
-        flexBasis:'40%'
+        flexBasis: 300
     },
 
     TextTitleInput:{
@@ -68,20 +67,14 @@ export default StyleSheet.create({
 
     ButtonIcon:{
         ...globalStyles.ButtonIconComeBack
-
     },
 
     ContainerButtonIconComeBack:{
         width: '100%',
         display: 'flex',
         alignItems: 'center',
-        marginTop:20,
+        
         
     },
-
-   
-   
-
-
 
 })

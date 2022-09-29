@@ -4,17 +4,23 @@ import Input from '../../shared/Input'
 import Button from "../../shared/Button";
 import colors from "../../../styles/colors";
 import {applyTelephoneMask } from "../../../utils/masks";
+import {IPropsStepsGlobal} from '../../../pages/register'
+import { isEmail } from "../../../utils/validation";
 
-
-export interface IRegisterProps {
-    onPress?: any
-    styles: any
-    onChange : (value : string, key : any) => void
-    formData: any
-}
-
-const RegisterStep1: React.FC<IRegisterProps> = ({ onPress , styles, onChange , formData}) => {
+const RegisterStep1: React.FC<IPropsStepsGlobal> = ({ NextStep , styles, onChange , formData}) => {
     
+    const onSubmit = () => {
+        if(formData.name.length < 4){
+            return alert ('Verifique o campo Nome algo está errado, seu nome deve conter mais de 4 caracteres!')
+        }else if(formData.telephone.length <= 13){
+            return alert ('Verifique o campo de Telefone algo está errado!')
+        }
+        else{
+           NextStep()
+        }
+        
+    }
+
     return (
         <View>
             <View style={styles.ContainerInputs}>
@@ -43,7 +49,7 @@ const RegisterStep1: React.FC<IRegisterProps> = ({ onPress , styles, onChange , 
                 <Button
                     style={styles.ButtonIcon}
                     nameIcon="arrowright"
-                    onPress={onPress}
+                    onPress={onSubmit}
                     iconColor={colors.WHITE}
                     iconSize={32}
                 />

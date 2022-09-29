@@ -3,6 +3,9 @@ import {NavigationContainer} from '@react-navigation/native'
 import PageHome from "../pages/home";
 import PageRegister from "../pages/register";
 
+export interface IPageProps {
+  navigation : any
+}
 
 const Navigator: React.FC = () => {
     const Stack = createStackNavigator() 

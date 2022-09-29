@@ -6,23 +6,26 @@ import RegisterStep3 from "../../components/Forms/register/Step3";
 import Button from '../../components/shared/Button'
 import colors from "../../styles/colors";
 import RegisterStep2 from "../../components/Forms/register/Step2";
+import {IPageProps} from "../../navigators/Navigator"
 
-export interface IPropsSteps{
+export interface IPropsStepsGlobal{
     NextStep?: any
-    styles: any
+    styles?: any
     onChange : (value : string, key : any) => void
-    formData: any
+    formData?: any
 }
 
 
-const PageRegister: React.FC = ({navigation}) => {
+const PageRegister: React.FC<IPageProps> = ({navigation}) => {
+
 
     const [formValues, setFormValues] = useState({
-        email : "",
-        cell : "",
-        telephone : "",
         name : "",
-        
+        telephone : "",
+        cell : "",
+        email : "",
+        responsibleName:"",
+        responsibleTelephone:"",        
     })
 
     const [CurrentStep, setCureentStep] = useState(0)
@@ -40,34 +43,23 @@ const PageRegister: React.FC = ({navigation}) => {
         }
     }
 
-    const onSubmit = async () => {
-        if(formValues.name.length < 4){
-            return alert ('Verifique o campo Nome algo está errado, seu nome deve conter mais de 4 letras !')
-        }else if(formValues.telephone.length <= 13){
-            return alert ('Verifique o campo de Telefone algo está errado!')
-        }
-        else{
-           NextStep()
-        }
-        
-    }
+   
 
     const Steps = [
         {
             desc: 'Dados Pessoais',
-            component: <RegisterStep1 formData={formValues} onChange={handleInputChange} styles={styles} onPress={onSubmit}/> 
+            component: <RegisterStep1 formData={formValues} onChange={handleInputChange} styles={styles} NextStep={NextStep}/> 
         },
         {
             desc: 'Dados Pessoais',
             component: <RegisterStep2 formData={formValues} onChange={handleInputChange} styles={styles} NextStep={NextStep} />,
         },
         {
-            desc: 'Dados do responsável',
-            component: <RegisterStep3 styles={styles} />,
+            desc: 'Dados do responsável (Opcional)',
+            component: <RegisterStep3 onChange={handleInputChange} styles={styles} formData={formValues}/>,
         },
 
     ]
-
 
     return (
         <View style={styles.ContainerRegister}>
@@ -91,8 +83,6 @@ const PageRegister: React.FC = ({navigation}) => {
                 </View>
 
                 {Steps[CurrentStep].component}
-
-
 
             </View>
 

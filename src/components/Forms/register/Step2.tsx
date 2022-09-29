@@ -5,18 +5,12 @@ import ButtonComponent from "../../shared/Button";
 import { applyCellMask } from "../../../utils/masks";
 import { isEmail } from '../../../utils/validation';
 import colors from "../../../styles/colors";
+import { IPropsStepsGlobal } from '../../../pages/register'
 
-export interface IRegisterPropsStep2Props {
-    NextStep: any
-    styles: any
-    onChange: (value: string, key: any) => void
-    formData: any
-}
+const RegisterStep2: React.FC<IPropsStepsGlobal> = ({ styles, onChange, formData, NextStep }) => {
 
+    const onSubmit = () => {
 
-const RegisterStep2: React.FC<IRegisterPropsStep2Props> = ({ styles, onChange, formData, NextStep }) => {
-
-    const onSubmit = async () => {
         if (formData.cell.length <= 14) {
             return alert('Verifique o campo de Celular algo está errado!')
         }
@@ -45,7 +39,6 @@ const RegisterStep2: React.FC<IRegisterPropsStep2Props> = ({ styles, onChange, f
 
                 <Text style={styles.TextTitleInput}>Email</Text>
                 <Input
-
                     icon="email"
                     placeholder="Email"
                     value={formData.email}
