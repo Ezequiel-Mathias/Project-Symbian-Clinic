@@ -3,8 +3,9 @@ import { View, Text, Image } from 'react-native'
 import styles from './style'
 import Button from '../../components/shared/Button'
 import colors from '../../styles/colors'
+import {IPageProps} from "../../navigators/Navigator"
 
-const PageHome: React.FC = ({navigation}) => {
+const PageHome: React.FC<IPageProps> = ({navigation}) => {
 
    
     return (

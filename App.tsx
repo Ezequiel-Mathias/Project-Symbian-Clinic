@@ -5,7 +5,6 @@ import { fontsToImport } from './src/styles/fonts';
 
 
 
-
 export default function App() {
   let [fontsLoaded] = useFonts(fontsToImport);
   
@@ -13,6 +12,7 @@ export default function App() {
   return (
 
     <Navigator />
+    
 
   );
 }

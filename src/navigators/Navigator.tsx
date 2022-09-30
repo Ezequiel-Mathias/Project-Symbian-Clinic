@@ -2,7 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native'
 import PageHome from "../pages/home";
 import PageRegister from "../pages/register";
-
+import Slepsh from '../pages/splash'
 export interface IPageProps {
   navigation : any
 }
