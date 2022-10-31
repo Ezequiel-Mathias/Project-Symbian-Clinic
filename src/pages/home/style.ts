@@ -8,17 +8,37 @@ export default StyleSheet.create({
     ContainerRegister: {
         ...globalStyles.Containers
     },
+
+    ButtonList:{
+        marginTop: 35,
+        padding: 5,
+        paddingLeft:10,
+        paddingRight:10,
+        backgroundColor: colors.PRIMARY,
+        borderRadius: 16,   
+    },
+
+    TextButtonList:{
+        fontSize: 16,
+        marginTop:4
+    },
     Logo:{
-        ...globalStyles.Logo
+        ...globalStyles.Logo,
+        flexBasis: '10%',
+        marginTop: 50
+        
     },
     Image:{
         width: 420,
         marginBottom: 30
+        
     },
 
     ContainerNextStep:{
         ...globalStyles.ContainerInteractionUser,
-        alignItems: 'center'
+        alignItems: 'center',
+        height: 400
+
     },
     RegisterText:{
         fontSize: 32,

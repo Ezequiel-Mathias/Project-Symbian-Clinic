@@ -6,7 +6,11 @@ import globalStyles from "../../styles/LayoutStyles";
 
 export default StyleSheet.create({
     containerPagePatients:{
-        ...globalStyles.Containers
+        ...globalStyles.Containers,
+        width: '100%',
+        height: '100%',
+        
+        
     },
 
     Logo:{

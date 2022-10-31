@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, ScrollView , RefreshControl } from "react-native";
+import { View, Text, ScrollView, RefreshControl } from "react-native";
 import ButtonComponent from "../../components/shared/Button";
 import apiSybiam from "../../service/apiSybiam";
 import style from "./style";
 import colors from "../../styles/colors";
 import { IPageProps } from "../../navigators/Navigator";
 import { applyTelephoneMask, applyCellMask } from '../../utils/masks'
+import { Alert } from "react-native";
 
 const PagePatients: React.FC<IPageProps> = ({ navigation }) => {
 
     const [pacientes, setPacientes] = useState([])
-    const [atualizando , setAtualizando] = useState(false)
-    const ListOfPacientes = () => {
-   
-        useEffect(
+    const [atualizando, setAtualizando] = useState(false)
+
+    
+
+    useEffect(
         () => {
-            
+
             apiSybiam.get('/listarPaciente').
                 then(
                     (data) => {
@@ -23,30 +25,48 @@ const PagePatients: React.FC<IPageProps> = ({ navigation }) => {
                     }
                 ).catch(
                     (error) => console.log(error)
-                )       
-        },[]
+                )
+        }, []
 
     )
-    
-    }
-    ListOfPacientes()
 
-    
-    
 
-    const excluir = (cod_paciente : number) => {
-        try{
-            apiSybiam.delete(`/excluirLivros/${cod_paciente}`)
-        }catch(error){
 
-        }
 
+
+
+    const excluir = (cod_paciente: number) => {
+
+        Alert.alert(
+            "Deseja exluir o registro desse paciente ?",
+            "Caso o registro seja excluido não terá como recupera-lo novamente !",
+            [
+              // The "Yes" button
+              {
+                text: "Sim",
+                onPress: () => {
+                    try {
+                        apiSybiam.delete(`/excluirLivros/${cod_paciente}`)
         
+                    } catch (error) {
+        
+                    }
+                },
+              },
+              // The "No" button
+              // Does nothing but dismiss the dialog when tapped
+              {
+                text: "Não",
+              },
+            ]
+          );
+    
     }
 
     return (
 
-        <ScrollView >
+        <ScrollView
+        >
             <View style={style.containerPagePatients}>
                 <View style={style.containerIconComeback}>
                     <ButtonComponent
@@ -109,9 +129,10 @@ const PagePatients: React.FC<IPageProps> = ({ navigation }) => {
                                 }
 
                                 <View style={style.ContainerButtons}>
-                                    <ButtonComponent onPress={() => { 
+                                    <ButtonComponent onPress={() => {
                                         excluir(pacientes.cod_paciente)
-                                        ListOfPacientes()
+
+
                                     }} text={'Excluir'} textStyle={style.TextButtonDelete} style={style.ButtonDelete} />
                                     <ButtonComponent onPress={() => { }} text={'Editar'} textStyle={style.TextButtonEdit} style={style.ButtonEdit} />
                                 </View>

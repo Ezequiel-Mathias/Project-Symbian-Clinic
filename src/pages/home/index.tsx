@@ -29,6 +29,13 @@ const PageHome: React.FC<IPageProps> = ({navigation}) => {
                  iconColor={colors.WHITE}
                  iconSize={32}
                  />
+
+            <Button 
+                 text='Lista de todos os pacientes'
+                 style={styles.ButtonList}
+                 onPress={() => {navigation.navigate('patients')}}
+                 textStyle={styles.TextButtonList}
+                 />
             </View>
 
             
