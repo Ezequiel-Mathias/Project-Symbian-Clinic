@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView , RefreshControl } from "react-native";
 import ButtonComponent from "../../components/shared/Button";
 import apiSybiam from "../../service/apiSybiam";
 import style from "./style";
@@ -10,9 +10,12 @@ import { applyTelephoneMask, applyCellMask } from '../../utils/masks'
 const PagePatients: React.FC<IPageProps> = ({ navigation }) => {
 
     const [pacientes, setPacientes] = useState([])
-
-    useEffect(
+    const [atualizando , setAtualizando] = useState(false)
+    const ListOfPacientes = () => {
+   
+        useEffect(
         () => {
+            
             apiSybiam.get('/listarPaciente').
                 then(
                     (data) => {
@@ -20,10 +23,16 @@ const PagePatients: React.FC<IPageProps> = ({ navigation }) => {
                     }
                 ).catch(
                     (error) => console.log(error)
-                )
-        }, []
+                )       
+        },[]
 
     )
+    
+    }
+    ListOfPacientes()
+
+    
+    
 
     const excluir = (cod_paciente : number) => {
         try{
@@ -31,11 +40,13 @@ const PagePatients: React.FC<IPageProps> = ({ navigation }) => {
         }catch(error){
 
         }
+
+        
     }
 
     return (
 
-        <ScrollView>
+        <ScrollView >
             <View style={style.containerPagePatients}>
                 <View style={style.containerIconComeback}>
                     <ButtonComponent
@@ -98,7 +109,10 @@ const PagePatients: React.FC<IPageProps> = ({ navigation }) => {
                                 }
 
                                 <View style={style.ContainerButtons}>
-                                    <ButtonComponent onPress={() => { excluir(pacientes.cod_paciente)}} text={'Excluir'} textStyle={style.TextButtonDelete} style={style.ButtonDelete} />
+                                    <ButtonComponent onPress={() => { 
+                                        excluir(pacientes.cod_paciente)
+                                        ListOfPacientes()
+                                    }} text={'Excluir'} textStyle={style.TextButtonDelete} style={style.ButtonDelete} />
                                     <ButtonComponent onPress={() => { }} text={'Editar'} textStyle={style.TextButtonEdit} style={style.ButtonEdit} />
                                 </View>
 
