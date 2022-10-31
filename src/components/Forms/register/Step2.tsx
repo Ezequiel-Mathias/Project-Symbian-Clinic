@@ -7,7 +7,8 @@ import { isEmail } from '../../../utils/validation';
 import colors from "../../../styles/colors";
 import { IPropsStepsGlobal } from '../../../pages/register'
 
-const RegisterStep2: React.FC<IPropsStepsGlobal> = ({ styles, onChange, formData, NextStep }) => {
+const RegisterStep2: React.FC<IPropsStepsGlobal> = ({ styles, onChange, formData, NextStep, handleOnChange }) => {
+
 
     const onSubmit = () => {
 
@@ -33,8 +34,13 @@ const RegisterStep2: React.FC<IPropsStepsGlobal> = ({ styles, onChange, formData
                     icon="settings-cell"
                     placeholder="(xx) xxxxx-xxxx"
                     value={formData.cell}
-                    onChangeText={(text: string) => onChange(applyCellMask(text), 'cell')}
-                    keyboardType={'numeric'}
+                    onChangeText={(text: string) => {
+                        onChange(applyCellMask(text), 'cell')
+                        handleOnChange(text, 'celular_paciente')
+
+
+                    }}
+                    keyboardType='numeric'
                 />
 
                 <Text style={styles.TextTitleInput}>Email</Text>
@@ -42,7 +48,10 @@ const RegisterStep2: React.FC<IPropsStepsGlobal> = ({ styles, onChange, formData
                     icon="email"
                     placeholder="Email"
                     value={formData.email}
-                    onChangeText={(text: string) => onChange(text, "email")}
+                    onChangeText={(text: string) => {
+                        onChange(text, "email")
+                        handleOnChange(text, 'email_paciente')
+                    }}
                     keyboardType='email-address'
                 />
             </View>

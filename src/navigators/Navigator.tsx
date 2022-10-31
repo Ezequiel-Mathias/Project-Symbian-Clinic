@@ -2,7 +2,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native'
 import PageHome from "../pages/home";
 import PageRegister from "../pages/register";
-import Slepsh from '../pages/splash'
+import PagePatients from '../pages/patients';
+
 export interface IPageProps {
   navigation : any
 }
@@ -26,6 +27,13 @@ const Navigator: React.FC = () => {
           }} 
           name="register"
           component={PageRegister}/>
+          <Stack.Screen options={{
+              title: '',
+              headerTransparent: true,
+              headerShown:false
+          }} 
+          name="patients" 
+          component={PagePatients} />
         </Stack.Navigator>
       </NavigationContainer>
     )

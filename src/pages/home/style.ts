@@ -1,7 +1,7 @@
 import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
 import { StyleSheet } from "react-native";
-import globalStyles from "../../styles/globalStyles";
+import globalStyles from "../../styles/LayoutStyles";
 
 
 export default StyleSheet.create({
@@ -9,11 +9,7 @@ export default StyleSheet.create({
         ...globalStyles.Containers
     },
     Logo:{
-        color: colors.WHITE,
-        fontSize: 39,
-        fontFamily: fonts.ROBOTO_BOLD,
-        marginTop: 82,
-        flexBasis: '15%'
+        ...globalStyles.Logo
     },
     Image:{
         width: 420,

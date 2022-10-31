@@ -31,7 +31,15 @@ import { StyleSheet } from "react-native";
         borderRadius: 40,
         display: 'flex',
         flexDirection: 'column'
-    }
+    },
+
+    Logo:{
+        color: colors.WHITE,
+        fontSize: 39,
+        fontFamily: fonts.ROBOTO_BOLD,
+        marginTop: 82,
+        flexBasis: '15%'
+    },
 })
 
 export default globalStyles

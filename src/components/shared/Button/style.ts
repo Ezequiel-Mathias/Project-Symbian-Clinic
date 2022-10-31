@@ -6,7 +6,6 @@ const base = {
     width : 300,
     height : 38,
     margin : 16,
-    
     borderRadius: 12,
     backgroundColor : colors.PRIMARY,
 }
