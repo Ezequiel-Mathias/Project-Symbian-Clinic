@@ -1,6 +1,6 @@
 # Symbian Clinic
 
-Aplicativo Symbian Clinic desenvolvido com o framework React Native como exercício desenvolvido pela instituição de ensino SENAI-JANDIRA cujo o objetivo é uma  aplicação   para   o agendamento  de  cirurgias  em  uma  clínica.  Essa  aplicação  será  usada  por  pacientes, enfermeiras(os)  e  médicas(os)  onde  esses  diferentes  usuários  realizarão  diferentes tarefas.
+Aplicativo Symbian Clinic desenvolvido com o framework React Native como exercício desenvolvido pela instituição de ensino SENAI cujo o objetivo é uma  aplicação   para   o agendamento  de  cirurgias  em  uma  clínica.  Essa  aplicação  será  usada  por  pacientes, enfermeiras(os)  e  médicas(os)  onde  esses  diferentes  usuários  realizarão  diferentes tarefas.
 
 ### Pre-requisitos
 
@@ -9,6 +9,8 @@ Aplicativo Symbian Clinic desenvolvido com o framework React Native como exercí
 - NodeJs (Versão LTS)
 - Expo-cli
 
+É necessário que esteja funcionando o backend dessa aplição, clone o repositorio e siga os passos para o funcionamendo do projeto backend 
+link do projeto : https://github.com/Ezequiel-Mathias/Project-Symbian-Backend-API
 
 ### Instalação
 
@@ -36,6 +38,11 @@ npm i
 Para executar o projeto basta estar na pasta do repositório e executar
 ```
 expo start
+```
+ou
+
+```
+npm start
 ```
 Em seguida, será aberto no seu navegador padrão uma aba na porta http://localhost:19002/<br/>
 O app pode rodar no seu próprio celular ou em um emulador no computador.<br/>
