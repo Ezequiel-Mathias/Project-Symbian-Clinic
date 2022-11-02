@@ -36,7 +36,7 @@ const PageRegister: React.FC<IPageProps> = ({ navigation }) => {
         if (input === 'celular_paciente') {
             const clear = text.replace(/[^0-9]+/g, '');
             const lengthTextInput = text.length
-            if (lengthTextInput < 16) {
+            if (lengthTextInput === 11) {
                 setInputs((prevState) => (
                     { ...prevState, [input]: clear }
                 ))
@@ -45,7 +45,7 @@ const PageRegister: React.FC<IPageProps> = ({ navigation }) => {
         } else if (input === 'telefone_paciente' || input === 'telefone_responsavel') {
             const clear = text.replace(/[^0-9]+/g, '');
             const lengthTextInput = text.length
-            if (lengthTextInput < 15) {
+            if (lengthTextInput === 10) {
                 setInputs((prevState) => (
                     { ...prevState, [input]: clear }
                 ))
@@ -86,7 +86,7 @@ const PageRegister: React.FC<IPageProps> = ({ navigation }) => {
 
     const cadastrar = () => {
         try {
-            const response = apiSybiam.post('/registrarPaciente',
+            const response = apiSybiam.post('/registrarRegistro',
                 {
                     nome_paciente: inputs.nome_paciente,
                     telefone_paciente: inputs.telefone_paciente,

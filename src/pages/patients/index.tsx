@@ -13,12 +13,10 @@ const PagePatients: React.FC<IPageProps> = ({ navigation }) => {
     const [pacientes, setPacientes] = useState([])
     const [atualizando, setAtualizando] = useState(false)
 
-    
-
     useEffect(
         () => {
 
-            apiSybiam.get('/listarPaciente').
+            apiSybiam.get('/listarRegistros').
                 then(
                     (data) => {
                         setPacientes(data.data)
@@ -30,42 +28,58 @@ const PagePatients: React.FC<IPageProps> = ({ navigation }) => {
 
     )
 
-
-
-
-
-
     const excluir = (cod_paciente: number) => {
 
         Alert.alert(
             "Deseja exluir o registro desse paciente ?",
-            "Caso o registro seja excluido não terá como recupera-lo novamente !",
+            "Assim que executar a exclusão do registro, recarregue a pagina !",
             [
-              // The "Yes" button
-              {
-                text: "Sim",
-                onPress: () => {
-                    try {
-                        apiSybiam.delete(`/excluirLivros/${cod_paciente}`)
-        
-                    } catch (error) {
-        
-                    }
+                // The "Yes" button
+                {
+                    text: "Sim",
+                    onPress: () => {
+                        try {
+                            apiSybiam.delete(`/excluirRegistro/${cod_paciente}`)
+
+                        } catch (error) {
+
+                        }
+                    },
                 },
-              },
-              // The "No" button
-              // Does nothing but dismiss the dialog when tapped
-              {
-                text: "Não",
-              },
+                // The "No" button
+                // Does nothing but dismiss the dialog when tapped
+                {
+                    text: "Não",
+                },
             ]
-          );
-    
+        );
+
     }
+
+
 
     return (
 
         <ScrollView
+            refreshControl={
+                <RefreshControl
+                    refreshing={atualizando}
+                    onRefresh={() => {
+                        setAtualizando(true)
+                        setTimeout(() => {
+                            apiSybiam.get('/listarRegistros').
+                                then(
+                                    (data) => {
+                                        setPacientes(data.data)
+                                    }
+                                ).catch(
+                                    (error) => console.log(error)
+                                )
+                            setAtualizando(false)
+                        }, 1000)
+                    }}
+                />
+            }
         >
             <View style={style.containerPagePatients}>
                 <View style={style.containerIconComeback}>
@@ -80,6 +94,7 @@ const PagePatients: React.FC<IPageProps> = ({ navigation }) => {
 
                 <Text style={style.Logo}>Symbian Clinic</Text>
                 <Text style={style.Paragraph}>Lista de todos os pacientes</Text>
+                
                 {
                     pacientes.map((pacientes: any) => (
 
@@ -131,8 +146,6 @@ const PagePatients: React.FC<IPageProps> = ({ navigation }) => {
                                 <View style={style.ContainerButtons}>
                                     <ButtonComponent onPress={() => {
                                         excluir(pacientes.cod_paciente)
-
-
                                     }} text={'Excluir'} textStyle={style.TextButtonDelete} style={style.ButtonDelete} />
                                     <ButtonComponent onPress={() => { }} text={'Editar'} textStyle={style.TextButtonEdit} style={style.ButtonEdit} />
                                 </View>
