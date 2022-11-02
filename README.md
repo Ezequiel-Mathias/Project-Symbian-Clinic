@@ -25,7 +25,6 @@ npm install expo-cli --global
 
 Escolha uma pasta para armazenar o projeto e em seguida digite no terminal:
 
-Primeiro faça um clone do repositório na pasta desejada do seu computador
 ```
 git clone https://github.com/Ezequiel-Mathias/Project-Symbian-Clinic
 ```
