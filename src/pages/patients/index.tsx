@@ -7,11 +7,15 @@ import colors from "../../styles/colors";
 import { IPageProps } from "../../navigators/Navigator";
 import { applyTelephoneMask, applyCellMask } from '../../utils/masks'
 import { Alert } from "react-native";
+import Input from "../../components/shared/Input";
 
 const PagePatients: React.FC<IPageProps> = ({ navigation }) => {
-
     const [pacientes, setPacientes] = useState([])
     const [atualizando, setAtualizando] = useState(false)
+    const [editarDados , setEditarDados] = useState(false)
+   
+
+    
 
     useEffect(
         () => {
@@ -27,6 +31,14 @@ const PagePatients: React.FC<IPageProps> = ({ navigation }) => {
         }, []
 
     )
+
+    const EditarDados = () => {
+        if(editarDados){
+            setEditarDados(false)
+        }else{
+            setAtualizando(true)
+        }
+    }
 
     const excluir = (cod_paciente: number) => {
 
@@ -61,6 +73,7 @@ const PagePatients: React.FC<IPageProps> = ({ navigation }) => {
     return (
 
         <ScrollView
+            style={{ backgroundColor : colors.PRIMARY}}
             refreshControl={
                 <RefreshControl
                     refreshing={atualizando}
@@ -103,7 +116,12 @@ const PagePatients: React.FC<IPageProps> = ({ navigation }) => {
 
                                 <View style={style.ContainerDicePatientsOfContact}>
                                     <Text style={style.DicePatients}>Nome:</Text>
-                                    <Text style={style.DicePatientsOfContact}>{pacientes.nome_paciente}</Text>
+                                    {editarDados ?
+                                        <Input/>
+                                        :
+                                        <Text style={style.DicePatientsOfContact}>{pacientes.nome_paciente}</Text>
+                                    }
+                                    
                                 </View>
 
                                 <View style={style.ContainerDicePatientsOfContact}>
@@ -147,7 +165,7 @@ const PagePatients: React.FC<IPageProps> = ({ navigation }) => {
                                     <ButtonComponent onPress={() => {
                                         excluir(pacientes.cod_paciente)
                                     }} text={'Excluir'} textStyle={style.TextButtonDelete} style={style.ButtonDelete} />
-                                    <ButtonComponent onPress={() => { }} text={'Editar'} textStyle={style.TextButtonEdit} style={style.ButtonEdit} />
+                                    <ButtonComponent onPress={() => {EditarDados()}} text={'Editar'} textStyle={style.TextButtonEdit} style={style.ButtonEdit} />
                                 </View>
 
                             </View>

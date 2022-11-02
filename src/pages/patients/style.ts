@@ -6,13 +6,6 @@ import globalStyles from "../../styles/LayoutStyles";
 
 export default StyleSheet.create({
 
-    teste:{
-        width: '100%',
-        height: "100%",
-        backgroundColor: colors.RED
-        
-    },
-
     containerPagePatients:{
         ...globalStyles.Containers, 
         

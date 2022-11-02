@@ -33,10 +33,9 @@ const PageRegister: React.FC<IPageProps> = ({ navigation }) => {
 
     const handleOnChange = (text: string, input: any) => {
 
-        if (input === 'celular_paciente') {
+        if (input === 'celular_paciente' || input === 'celular_responsavel') {
             const clear = text.replace(/[^0-9]+/g, '');
-            const lengthTextInput = text.length
-            if (lengthTextInput === 11) {
+            if (clear.length === 11) {
                 setInputs((prevState) => (
                     { ...prevState, [input]: clear }
                 ))
@@ -44,8 +43,7 @@ const PageRegister: React.FC<IPageProps> = ({ navigation }) => {
 
         } else if (input === 'telefone_paciente' || input === 'telefone_responsavel') {
             const clear = text.replace(/[^0-9]+/g, '');
-            const lengthTextInput = text.length
-            if (lengthTextInput === 10) {
+            if (clear.length === 10) {
                 setInputs((prevState) => (
                     { ...prevState, [input]: clear }
                 ))
