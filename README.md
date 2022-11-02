@@ -53,5 +53,5 @@ No celular basta baixar o aplicativo Expo na Play Store e pegar o QRCODE da aba 
 
 https://github.com/Ezequiel-Mathias/Project-Symbian-Backend-API
 
-##### Neste projeto voce deve acessar o caminho service/apiSybiam.tsx e colocar seu ip no lugar dos xxx para que o backend consiga "conversar" com o front e o projeto possa funcionar por completo !
+##### Neste projeto voce deve acessar o caminho src/service/apiSybiam.tsx e colocar seu ip no lugar dos xxx para que o backend consiga "conversar" com o front e o projeto possa funcionar por completo !
 
