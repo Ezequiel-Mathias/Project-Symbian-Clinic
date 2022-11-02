@@ -48,3 +48,10 @@ Em seguida, será aberto no seu navegador padrão uma aba na porta http://localh
 O app pode rodar no seu próprio celular ou em um emulador no computador.<br/>
 No celular basta baixar o aplicativo Expo na Play Store e pegar o QRCODE da aba aberta no navegador. O dowload do App será em seguida feito.<br/>
 
+
+##### Caso esteja usando o backend do projeto Sybian que esta no repositorio:
+
+https://github.com/Ezequiel-Mathias/Project-Symbian-Backend-API
+
+##### Neste projeto voce deve acessar o caminho service/apiSybiam.tsx e colocar seu ip no lugar dos xxx para que o backend consiga "conversar" com o front e o projeto possa funcionar por completo !
+
