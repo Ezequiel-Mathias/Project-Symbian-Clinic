@@ -31,7 +31,7 @@ const Navigator: React.FC = () => {
         }}
           name="register"
           component={PageRegister} />
-
+          
         <Stack.Screen options={{
           title: '',
           headerTransparent: true,
