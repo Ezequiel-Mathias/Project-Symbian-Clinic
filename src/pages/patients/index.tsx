@@ -12,10 +12,6 @@ import Input from "../../components/shared/Input";
 const PagePatients: React.FC<IPageProps> = ({ navigation }) => {
     const [pacientes, setPacientes] = useState([])
     const [atualizando, setAtualizando] = useState(false)
-    const [editarDados , setEditarDados] = useState(false)
-   
-
-    
 
     useEffect(
         () => {
@@ -32,19 +28,28 @@ const PagePatients: React.FC<IPageProps> = ({ navigation }) => {
 
     )
 
-    const EditarDados = () => {
-        if(editarDados){
-            setEditarDados(false)
-        }else{
-            setAtualizando(true)
-        }
+   
+
+    const AtualizarDados = () => {
+        setAtualizando(true)
+        setTimeout(() => {
+            apiSybiam.get('/listarRegistros').
+                then(
+                    (data) => {
+                        setPacientes(data.data)
+                    }
+                ).catch(
+                    (error) => console.log(error)
+                )
+            setAtualizando(false)
+        }, 1000)
     }
 
     const excluir = (cod_paciente: number) => {
 
         Alert.alert(
             "Deseja exluir o registro desse paciente ?",
-            "Assim que executar a exclusão do registro, recarregue a pagina !",
+            "Caso exclua não será possivel recuperar esses dados novamente !",
             [
                 // The "Yes" button
                 {
@@ -52,7 +57,7 @@ const PagePatients: React.FC<IPageProps> = ({ navigation }) => {
                     onPress: () => {
                         try {
                             apiSybiam.delete(`/excluirRegistro/${cod_paciente}`)
-
+                            AtualizarDados()
                         } catch (error) {
 
                         }
@@ -73,24 +78,11 @@ const PagePatients: React.FC<IPageProps> = ({ navigation }) => {
     return (
 
         <ScrollView
-            style={{ backgroundColor : colors.PRIMARY}}
+            style={{ backgroundColor: colors.PRIMARY }}
             refreshControl={
                 <RefreshControl
                     refreshing={atualizando}
-                    onRefresh={() => {
-                        setAtualizando(true)
-                        setTimeout(() => {
-                            apiSybiam.get('/listarRegistros').
-                                then(
-                                    (data) => {
-                                        setPacientes(data.data)
-                                    }
-                                ).catch(
-                                    (error) => console.log(error)
-                                )
-                            setAtualizando(false)
-                        }, 1000)
-                    }}
+                    onRefresh={AtualizarDados}
                 />
             }
         >
@@ -107,56 +99,52 @@ const PagePatients: React.FC<IPageProps> = ({ navigation }) => {
 
                 <Text style={style.Logo}>Symbian Clinic</Text>
                 <Text style={style.Paragraph}>Lista de todos os pacientes</Text>
-                
-                {
-                    pacientes.map((pacientes: any) => (
 
-                        <View style={style.containerDicePatients} key={pacientes.cod_paciente}>
+                {
+                    pacientes.map((pacientes: any , index : number) => (
+
+                        <View style={style.containerDicePatients} key={index}>
                             <View style={style.Dice}>
 
                                 <View style={style.ContainerDicePatientsOfContact}>
                                     <Text style={style.DicePatients}>Nome:</Text>
-                                    {editarDados ?
-                                        <Input/>
-                                        :
-                                        <Text style={style.DicePatientsOfContact}>{pacientes.nome_paciente}</Text>
-                                    }
-                                    
+                                    <Text style={style.DicePatientsOfContact}>{pacientes.nome_paciente}</Text>
+
                                 </View>
 
                                 <View style={style.ContainerDicePatientsOfContact}>
                                     <Text style={style.DicePatients}>Telefone:</Text>
+                                        <Text style={style.DicePatientsOfContact}>
+                                            {applyTelephoneMask(pacientes.telefone_paciente)}
+                                        </Text>
 
-                                    <Text style={style.DicePatientsOfContact}>{
-                                        applyTelephoneMask(pacientes.telefone_paciente)
-                                    }</Text>
                                 </View>
 
                                 <View style={style.ContainerDicePatientsOfContact}>
                                     <Text style={style.DicePatients}>Celular:</Text>
-                                    <Text style={style.DicePatientsOfContact}>{
-                                        applyCellMask(pacientes.celular_paciente)
-                                    }</Text>
+                                        <Text style={style.DicePatientsOfContact}>
+                                            {applyCellMask(pacientes.celular_paciente)}
+                                        </Text>
+
                                 </View>
 
                                 <View style={style.ContainerDicePatientsOfContact}>
                                     <Text style={style.DicePatients}>Email:</Text>
-                                    <Text style={style.DicePatientsOfContact}>{pacientes.email_paciente}</Text>
+                                        <Text style={style.DicePatientsOfContact}>{pacientes.email_paciente}</Text>
                                 </View>
 
                                 {pacientes.nome_responsavel &&
                                     <View>
                                         <View style={style.ContainerDicePatientsOfContact}>
                                             <Text style={style.DicePatients}>Nome do responsavel:</Text>
-                                            <Text style={style.DicePatientsOfContact}>{pacientes.nome_responsavel}</Text>
+                                                <Text style={style.DicePatientsOfContact}>{pacientes.nome_responsavel}</Text>
                                         </View>
 
                                         <View style={style.ContainerDicePatientsOfContact}>
                                             <Text style={style.DicePatients}>Telefone do responsavel:</Text>
-                                            <Text style={style.DicePatientsOfContact}>{
-                                                applyTelephoneMask(pacientes.telefone_responsavel)
-                                            }
-                                            </Text>
+                                                <Text style={style.DicePatientsOfContact}>
+                                                    {applyTelephoneMask(pacientes.telefone_responsavel)}
+                                                </Text>
                                         </View>
                                     </View>
                                 }
@@ -165,7 +153,7 @@ const PagePatients: React.FC<IPageProps> = ({ navigation }) => {
                                     <ButtonComponent onPress={() => {
                                         excluir(pacientes.cod_paciente)
                                     }} text={'Excluir'} textStyle={style.TextButtonDelete} style={style.ButtonDelete} />
-                                    <ButtonComponent onPress={() => {EditarDados()}} text={'Editar'} textStyle={style.TextButtonEdit} style={style.ButtonEdit} />
+                                    <ButtonComponent onPress={() => navigation.navigate('editarRegistro' , {cod_livro : pacientes.cod_paciente})} text={'Editar'} textStyle={style.TextButtonEdit} style={style.ButtonEdit} />
                                 </View>
 
                             </View>

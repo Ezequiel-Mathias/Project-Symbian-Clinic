@@ -8,6 +8,7 @@ import colors from "../../styles/colors";
 import RegisterStep2 from "../../components/Forms/register/Step2";
 import { IPageProps } from "../../navigators/Navigator";
 import apiSybiam from "../../service/apiSybiam";
+import { ClearMask } from "../../utils/masks";
 
 
 export interface IPropsStepsGlobal {
@@ -34,7 +35,7 @@ const PageRegister: React.FC<IPageProps> = ({ navigation }) => {
     const handleOnChange = (text: string, input: any) => {
 
         if (input === 'celular_paciente' || input === 'celular_responsavel') {
-            const clear = text.replace(/[^0-9]+/g, '');
+            const clear = ClearMask(text);
             if (clear.length === 11) {
                 setInputs((prevState) => (
                     { ...prevState, [input]: clear }
@@ -42,7 +43,7 @@ const PageRegister: React.FC<IPageProps> = ({ navigation }) => {
             }
 
         } else if (input === 'telefone_paciente' || input === 'telefone_responsavel') {
-            const clear = text.replace(/[^0-9]+/g, '');
+            const clear = ClearMask(text);
             if (clear.length === 10) {
                 setInputs((prevState) => (
                     { ...prevState, [input]: clear }

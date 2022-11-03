@@ -13,16 +13,16 @@ interface IPropsInput {
     iconSize?: number
     keyboardType ?: "default" | "numeric" | "email-address"
     value?: string
-    validate? : any
+    style? : any
     onChangeText?: (text : string) => void
 
 }
 
-const Input: React.FC<IPropsInput> = ({ placeholder, Inputstyle, icon, color, iconSize, validate , onChangeText , value , keyboardType}) => {
+const Input: React.FC<IPropsInput> = ({ placeholder, Inputstyle, icon, color, iconSize, style , onChangeText , value , keyboardType}) => {
 
 
     return (
-        <View style={validate ? styles.teste : styles.Container}>
+        <View style={style ? style : styles.ContainerInput}>
             {icon && <MaterialIcons name={icon} size={iconSize || 24} color={color} style={{ marginTop: 9 , marginRight: 10 }} />}
             <TextInput
                 placeholder={placeholder}

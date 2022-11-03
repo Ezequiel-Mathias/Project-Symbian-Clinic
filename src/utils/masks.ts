@@ -16,3 +16,8 @@ export const applyTelephoneMask = (value : string) => {
         .replace(/^(\d\d)(\d{0,5})/, "($1) $2")
         .replace(/^(\d*)/, "$1");
 }
+
+
+export const ClearMask = (value: string) => {
+     return value.replace(/[^0-9]+/g, '')
+}
