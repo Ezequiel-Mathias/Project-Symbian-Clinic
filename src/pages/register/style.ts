@@ -55,7 +55,7 @@ export default StyleSheet.create({
 
     ContainerInputs:{
         marginLeft: 30,
-        flexBasis: 300
+        flexBasis: "40%"
     },
 
     TextTitleInput:{
@@ -70,7 +70,6 @@ export default StyleSheet.create({
     },
 
     ContainerButtonIconComeBack:{
-        width: '100%',
         display: 'flex',
         alignItems: 'center',
         
